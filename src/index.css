@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-gold: #c5a059;
+    --brand-dark: #121216;
+    --brand-ivory: #faf8f5;
+  }
+
+  body {
+    background-color: #faf8f5;
+    color: #171717;
+    overflow-x: hidden;
+  }
+
+  /* Custom luxury scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1ede4;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c5a059;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a8833e;
+  }
+}
+
+@layer components {
+  .luxury-button-gold {
+    @apply relative inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wider uppercase transition-all duration-300 text-luxury-black bg-gradient-to-r from-luxury-gold-400 via-luxury-gold-500 to-luxury-gold-600 hover:from-luxury-gold-300 hover:to-luxury-gold-500 shadow-gold-subtle hover:shadow-gold-glow active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .luxury-button-outline {
+    @apply relative inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wider uppercase transition-all duration-300 border border-luxury-gold-500 text-luxury-gold-500 hover:bg-luxury-gold-500 hover:text-luxury-black active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .luxury-button-dark {
+    @apply relative inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wider uppercase transition-all duration-300 bg-luxury-black text-luxury-cream-100 hover:bg-luxury-charcoal border border-neutral-800 hover:border-luxury-gold-500/40 active:scale-[0.98];
+  }
+
+  .luxury-heading-serif {
+    @apply font-serif tracking-tight text-neutral-900;
+  }
+
+  .luxury-card {
+    @apply bg-white border border-neutral-200/80 shadow-sm transition-all duration-300 hover:shadow-luxury hover:border-luxury-gold-500/30;
+  }
+
+  .luxury-card-dark {
+    @apply bg-luxury-charcoal border border-neutral-800 shadow-luxury-dark transition-all duration-300 hover:border-luxury-gold-500/30;
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(90deg, rgba(197,160,89,0) 0%, rgba(197,160,89,0.3) 50%, rgba(197,160,89,0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

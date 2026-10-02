@@ -1,0 +1,23 @@
+src\context\CartContext.jsx:3:import { trackEvent } from '../utils/analytics';
+src\context\CartContext.jsx:45:    trackEvent('cart_add', {
+src\context\CartContext.jsx:62:      trackEvent('cart_remove', {
+src\context\WishlistContext.jsx:3:import { trackEvent } from '../utils/analytics';
+src\context\WishlistContext.jsx:31:      trackEvent('wishlist_add', {
+src\context\WishlistContext.jsx:40:    trackEvent('wishlist_remove', { productId });
+src\pages\Category.jsx:7:import { trackEvent } from '../utils/analytics';
+src\pages\Category.jsx:29:        trackEvent('category_view', {
+src\pages\Checkout.jsx:11:import { trackEvent } from '../utils/analytics';
+src\pages\Checkout.jsx:43:      trackEvent('checkout_started', {
+src\pages\ProductDetails.jsx:27:import { trackEvent } from '../utils/analytics';
+src\pages\ProductDetails.jsx:70:          trackEvent('product_view', {
+src\pages\ProductDetails.jsx:133:        trackEvent('product_share', { productId: product.id, method: 'native' });
+src\pages\ProductDetails.jsx:143:    trackEvent('product_share', { productId: product.id, method: 'clipboard' });
+src\pages\Shop.jsx:8:import { trackEvent } from '../utils/analytics';
+src\pages\Shop.jsx:61:          trackEvent('search', { query: filters.search, resultCount: data.length });
+src\services\analyticsService.js:2:import { trackEvent as trackUtilEvent } from '../utils/analytics';
+src\services\analyticsService.js:8:  trackEvent(name, payload) {
+src\services\tryOnService.js:2:import { trackEvent } from '../utils/analytics';
+src\services\tryOnService.js:36:    trackEvent('ai_tryon', {
+src\utils\analytics.js:10:export const trackEvent = (eventName, payload = {}) => {
+src\utils\whatsapp.js:2:import { trackEvent } from './analytics';
+src\utils\whatsapp.js:70:    trackEvent('whatsapp_order_clicked', {
