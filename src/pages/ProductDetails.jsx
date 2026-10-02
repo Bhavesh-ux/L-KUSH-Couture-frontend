@@ -1,9 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   Heart,
   ShoppingBag,
-  Sparkles,
   Share2,
   Ruler,
   Star,
@@ -298,17 +298,6 @@ export const ProductDetails = () => {
               className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
             />
 
-            {/* AI Try-On Quick Trigger */}
-            <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-              <Link
-                to={`/try-on?productId=${product.id}`}
-                className="inline-flex items-center gap-1.5 bg-luxury-black/90 backdrop-blur-xs text-luxury-gold-300 border border-luxury-gold-500/40 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider hover:bg-luxury-gold-500 hover:text-luxury-black transition-all shadow-md"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-luxury-gold-400" />
-                <span>Try With AI</span>
-              </Link>
-            </div>
-
             {product.discount > 0 && (
               <span className="absolute top-3 right-3 bg-luxury-gold-500 text-luxury-black font-bold px-2.5 py-1 text-xs uppercase tracking-wider shadow-sm">
                 {product.discount}% Off
@@ -505,25 +494,10 @@ export const ProductDetails = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 pt-1">
-
-              <Link
-                to={`/try-on?productId=${product.id}`}
-                className="w-full"
-              >
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full"
-                  icon={Sparkles}
-                >
-                  AI Virtual Try-On
-                </Button>
-              </Link>
-
+            <div className="pt-1">
               <button
                 onClick={handleWhatsAppInquiry}
-                className="flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold uppercase tracking-wider border border-neutral-300 hover:bg-neutral-100 text-neutral-800 transition-colors"
+                className="w-full flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold uppercase tracking-wider border border-neutral-300 hover:bg-neutral-100 text-neutral-800 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />
                 <span>Ask Stylist</span>
@@ -868,3 +842,4 @@ export const ProductDetails = () => {
     </div>
   );
 };
+

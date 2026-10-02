@@ -24,8 +24,6 @@ import { Orders } from './pages/Orders';
 import { Notifications } from './pages/Notifications';
 import { Recommendations } from './pages/Recommendations';
 import { Trending } from './pages/Trending';
-import { TryOn } from './pages/TryOn';
-import { SavedLooks } from './pages/SavedLooks';
 
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
@@ -72,8 +70,6 @@ const router = createBrowserRouter([
       { path: '/notifications', element: <Notifications /> },
       { path: '/recommendations', element: <Recommendations /> },
       { path: '/trending', element: <Trending /> },
-      { path: '/try-on', element: <TryOn /> },
-      { path: '/saved-looks', element: <SavedLooks /> },
       { path: '*', element: <NotFound /> }
     ]
   },

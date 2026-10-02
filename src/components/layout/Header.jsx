@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -8,9 +9,6 @@ import {
   User,
   Menu,
   X,
-  Sparkles,
-  ArrowRight,
-  TrendingUp,
   LogOut
 } from 'lucide-react';
 import logoImg from '../../assets/logo.jpg';
@@ -43,7 +41,9 @@ export const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -60,15 +60,21 @@ export const Header = () => {
       setSearchResults([]);
       return;
     }
+
     const timer = setTimeout(async () => {
-      const results = await productService.getProducts({ search: searchQuery });
+      const results = await productService.getProducts({
+        search: searchQuery
+      });
+
       setSearchResults(results.slice(0, 5));
     }, 200);
+
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
+
     if (searchQuery.trim()) {
       navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
       setSearchOpen(false);
@@ -87,6 +93,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
+
       {/* Main Navigation Bar */}
       <nav
         className={`w-full transition-all duration-300 ${
@@ -96,6 +103,7 @@ export const Header = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+
           {/* Mobile Menu Trigger */}
           <div className="flex items-center lg:hidden">
             <button
@@ -105,6 +113,7 @@ export const Header = () => {
             >
               <Menu className="w-6 h-6" />
             </button>
+
             <button
               onClick={() => setSearchOpen(true)}
               className="p-1.5 ml-2 text-luxury-cream-100 hover:text-luxury-gold-400"
@@ -132,7 +141,10 @@ export const Header = () => {
           </div>
 
           {/* Centered Brand Logo */}
-          <Link to="/" className="flex flex-col items-center justify-center shrink-0 group">
+          <Link
+            to="/"
+            className="flex flex-col items-center justify-center shrink-0 group"
+          >
             <img
               src={logoImg}
               alt="L-KUSH Couture"
@@ -140,7 +152,7 @@ export const Header = () => {
             />
           </Link>
 
-          {/* Desktop Right Nav Links + Feature Button */}
+          {/* Desktop Right Nav Links */}
           <div className="hidden lg:flex items-center gap-6">
             {navLinks.slice(4).map((link) => (
               <Link
@@ -155,19 +167,11 @@ export const Header = () => {
                 {link.label}
               </Link>
             ))}
-
-            {/* AI Virtual Try-On Highlight Link */}
-            <Link
-              to="/try-on"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-luxury-gold-500/20 to-luxury-gold-400/10 border border-luxury-gold-400/50 text-luxury-gold-300 hover:bg-luxury-gold-500 hover:text-luxury-black transition-all shadow-sm rounded-none"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-luxury-gold-400 group-hover:text-luxury-black" />
-              <span>AI Try-On</span>
-            </Link>
           </div>
 
           {/* Header Action Icons */}
           <div className="flex items-center gap-3 sm:gap-4">
+
             {/* Search Trigger */}
             <button
               onClick={() => setSearchOpen(true)}
@@ -184,6 +188,7 @@ export const Header = () => {
               aria-label="View Wishlist"
             >
               <Heart className="w-5 h-5" />
+
               {wishlistCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-luxury-gold-500 text-luxury-black text-[10px] font-extrabold flex items-center justify-center">
                   {wishlistCount}
@@ -198,6 +203,7 @@ export const Header = () => {
               aria-label="Open Shopping Bag"
             >
               <ShoppingBag className="w-5 h-5" />
+
               {itemCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-luxury-gold-500 text-luxury-black text-[10px] font-extrabold flex items-center justify-center">
                   {itemCount}
@@ -212,6 +218,7 @@ export const Header = () => {
               aria-label="Notifications"
             >
               <Bell className="w-5 h-5" />
+
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-rose-600 text-white text-[10px] font-bold flex items-center justify-center animate-pulse">
                   {unreadCount}
@@ -243,28 +250,31 @@ export const Header = () => {
               {/* User Dropdown Menu */}
               {userDropdownOpen && isAuthenticated && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border border-neutral-200 shadow-xl py-2 text-neutral-900 z-50 animate-in fade-in zoom-in-95">
+
                   <div className="px-4 py-2 border-b border-neutral-100">
-                    <p className="text-xs font-bold text-neutral-900 truncate">{customer?.name}</p>
-                    <p className="text-[11px] text-neutral-500 truncate">{customer?.email}</p>
+                    <p className="text-xs font-bold text-neutral-900 truncate">
+                      {customer?.name}
+                    </p>
+
+                    <p className="text-[11px] text-neutral-500 truncate">
+                      {customer?.email}
+                    </p>
                   </div>
+
                   <Link
                     to="/profile"
                     className="block px-4 py-2 text-xs text-neutral-700 hover:bg-luxury-cream-100 hover:text-luxury-gold-700 font-medium"
                   >
                     My Profile & Measurements
                   </Link>
+
                   <Link
                     to="/orders"
                     className="block px-4 py-2 text-xs text-neutral-700 hover:bg-luxury-cream-100 hover:text-luxury-gold-700 font-medium"
                   >
                     My Concierge Orders
                   </Link>
-                  <Link
-                    to="/saved-looks"
-                    className="block px-4 py-2 text-xs text-neutral-700 hover:bg-luxury-cream-100 hover:text-luxury-gold-700 font-medium"
-                  >
-                    Saved AI Looks
-                  </Link>
+
                   <button
                     onClick={() => {
                       logoutCustomer();
@@ -285,6 +295,7 @@ export const Header = () => {
       {/* Global Interactive Search Overlay */}
       {searchOpen && (
         <div className="fixed inset-0 z-50 bg-luxury-black/90 backdrop-blur-md flex flex-col items-center p-4 sm:p-8 animate-in fade-in duration-200">
+
           <button
             onClick={() => setSearchOpen(false)}
             className="self-end p-2 text-neutral-400 hover:text-white"
@@ -294,6 +305,7 @@ export const Header = () => {
           </button>
 
           <div className="w-full max-w-2xl mt-8">
+
             <form onSubmit={handleSearchSubmit} className="relative">
               <input
                 ref={searchInputRef}
@@ -304,6 +316,7 @@ export const Header = () => {
                 placeholder="Search royal sherwanis, festive kurtas, bandhgalas..."
                 className="w-full bg-transparent border-b-2 border-luxury-gold-500 py-3 pr-12 text-lg sm:text-2xl text-white placeholder-neutral-500 focus:outline-none font-serif tracking-wide"
               />
+
               <button
                 type="submit"
                 className="absolute right-0 top-3 text-luxury-gold-400 hover:text-luxury-gold-300"
@@ -315,6 +328,7 @@ export const Header = () => {
             {/* Live Search Suggestions */}
             {searchResults.length > 0 && (
               <div className="mt-6 bg-white shadow-2xl border border-neutral-200 divide-y divide-neutral-100">
+
                 {searchResults.map((item) => (
                   <Link
                     key={item.id}
@@ -327,19 +341,23 @@ export const Header = () => {
                       alt={item.name}
                       className="w-12 h-14 object-cover object-top border"
                     />
+
                     <div className="flex-1">
                       <p className="text-xs uppercase tracking-widest text-luxury-gold-700 font-semibold">
                         {item.category}
                       </p>
+
                       <h4 className="font-serif text-sm font-semibold text-neutral-900">
                         {item.name}
                       </h4>
                     </div>
+
                     <span className="font-bold text-sm text-neutral-900">
                       {formatPrice(item.price)}
                     </span>
                   </Link>
                 ))}
+
                 <div className="p-3 bg-neutral-50 text-center">
                   <button
                     onClick={handleSearchSubmit}
@@ -357,20 +375,26 @@ export const Header = () => {
                 <span className="text-xs uppercase tracking-widest text-neutral-400 block mb-3 font-semibold">
                   Popular Ensembles
                 </span>
+
                 <div className="flex flex-wrap gap-2">
-                  {['Royal Sherwani', 'Velvet Bandhgala', 'Raw Silk Kurta', 'Benarasi Brocade', 'Chikankari Pastel', 'Sangeet Draped'].map(
-                    (tag) => (
-                      <button
-                        key={tag}
-                        onClick={() => {
-                          setSearchQuery(tag);
-                        }}
-                        className="px-3 py-1.5 text-xs text-luxury-cream-100 bg-neutral-900 hover:bg-luxury-gold-500 hover:text-luxury-black border border-neutral-700 transition-colors"
-                      >
-                        {tag}
-                      </button>
-                    )
-                  )}
+                  {[
+                    'Royal Sherwani',
+                    'Velvet Bandhgala',
+                    'Raw Silk Kurta',
+                    'Benarasi Brocade',
+                    'Chikankari Pastel',
+                    'Sangeet Draped'
+                  ].map((tag) => (
+                    <button
+                      key={tag}
+                      onClick={() => {
+                        setSearchQuery(tag);
+                      }}
+                      className="px-3 py-1.5 text-xs text-luxury-cream-100 bg-neutral-900 hover:bg-luxury-gold-500 hover:text-luxury-black border border-neutral-700 transition-colors"
+                    >
+                      {tag}
+                    </button>
+                  ))}
                 </div>
               </div>
             )}
@@ -381,14 +405,22 @@ export const Header = () => {
       {/* Mobile Slide-Out Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex">
+
           <div
             className="fixed inset-0 bg-luxury-black/80 backdrop-blur-xs"
             onClick={() => setMobileMenuOpen(false)}
           />
+
           <div className="relative w-4/5 max-w-sm bg-luxury-black text-white h-full shadow-2xl flex flex-col z-10 animate-in slide-in-from-left duration-300 border-r border-luxury-gold-500/30">
+
             {/* Mobile Menu Header */}
             <div className="p-5 border-b border-neutral-800 flex items-center justify-between">
-              <img src={logoImg} alt="L-KUSH Couture" className="h-9 w-auto" />
+              <img
+                src={logoImg}
+                alt="L-KUSH Couture"
+                className="h-9 w-auto"
+              />
+
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-1 text-neutral-400 hover:text-white"
@@ -399,16 +431,6 @@ export const Header = () => {
 
             {/* Navigation links */}
             <div className="p-5 overflow-y-auto flex-1 space-y-4">
-              <Link
-                to="/try-on"
-                className="flex items-center justify-between p-3 bg-gradient-to-r from-luxury-gold-500/20 to-transparent border border-luxury-gold-400/50 text-luxury-gold-300 font-semibold text-xs tracking-wider uppercase"
-              >
-                <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-luxury-gold-400" />
-                  AI Virtual Try-On Studio
-                </span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
 
               <div className="space-y-1">
                 {navLinks.map((link) => (
@@ -423,13 +445,18 @@ export const Header = () => {
               </div>
 
               <div className="pt-4 border-t border-neutral-800 space-y-2 text-xs tracking-wider uppercase text-neutral-400">
-                <Link to="/saved-looks" className="block py-1.5 hover:text-white">
-                  My Saved AI Looks
-                </Link>
-                <Link to="/orders" className="block py-1.5 hover:text-white">
+
+                <Link
+                  to="/orders"
+                  className="block py-1.5 hover:text-white"
+                >
                   Order Tracking
                 </Link>
-                <Link to="/notifications" className="block py-1.5 hover:text-white">
+
+                <Link
+                  to="/notifications"
+                  className="block py-1.5 hover:text-white"
+                >
                   Notifications ({unreadCount})
                 </Link>
               </div>
@@ -440,9 +467,15 @@ export const Header = () => {
               {isAuthenticated ? (
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-bold text-white">{customer?.name}</p>
-                    <p className="text-[10px] text-neutral-400">{customer?.email}</p>
+                    <p className="text-xs font-bold text-white">
+                      {customer?.name}
+                    </p>
+
+                    <p className="text-[10px] text-neutral-400">
+                      {customer?.email}
+                    </p>
                   </div>
+
                   <button
                     onClick={logoutCustomer}
                     className="text-xs text-rose-400 hover:text-rose-300 font-semibold uppercase"
@@ -459,6 +492,7 @@ export const Header = () => {
                 </Link>
               )}
             </div>
+
           </div>
         </div>
       )}

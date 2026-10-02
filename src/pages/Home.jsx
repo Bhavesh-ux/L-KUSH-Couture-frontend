@@ -69,7 +69,7 @@ export const Home = () => {
     {
       id: 2,
       quote:
-        'Using the AI Try-On gave me absolute confidence in the drape and silhouette before ordering. The WhatsApp concierge answered every custom measurement inquiry within minutes.',
+        'The WhatsApp concierge gave me absolute confidence in the drape and silhouette before ordering. Every custom measurement inquiry was answered within minutes.',
       author: 'Aarav S.',
       city: 'Mumbai',
       occasion: 'Sangeet Celebration',
@@ -91,6 +91,7 @@ export const Home = () => {
 
       {/* 1. Hero Section */}
       <section className="relative min-h-[85vh] lg:min-h-[90vh] bg-luxury-black text-white flex items-center overflow-hidden">
+
         {/* Background Image with Cinematic Overlay */}
         <div className="absolute inset-0 z-0">
           <img
@@ -132,17 +133,6 @@ export const Home = () => {
                   iconPosition="right"
                 >
                   Shop Collection
-                </Button>
-              </Link>
-
-              <Link to="/try-on">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  icon={Sparkles}
-                  className="text-luxury-gold-300 border-luxury-gold-400/80 hover:bg-luxury-gold-500 hover:text-luxury-black"
-                >
-                  AI Virtual Try-On
                 </Button>
               </Link>
             </div>
